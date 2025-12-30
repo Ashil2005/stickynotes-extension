@@ -1,0 +1,128 @@
+/* 
+  styles.css:
+  Injected into the webpage to style the sticky notes.
+  - Defines the appearance of notes (colors, shadows, fonts).
+  - Handles the layout of the note container, text area, and action buttons.
+  - Uses specific selectors to avoid CSS conflicts with the host website.
+*/
+
+.stickynote-container {
+    position: absolute;
+    width: 220px;
+    min-height: 180px;
+    background-color: #fff740;
+    /* Default if not set */
+    opacity: 1;
+    /* FIX: Explicit opacity ensures color rendering is not washed out by inherited transitions */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 999999;
+    /* Ensure it stays on top */
+    border-radius: 8px;
+    /* Slightly rounded for modern look */
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stickynote-container:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.stickynote-header {
+    height: 28px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 8px;
+    background-color: rgba(0, 0, 0, 0.08);
+    /* Slightly darker for better contrast */
+    cursor: grab;
+    transition: background-color 0.2s;
+}
+
+.stickynote-header:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.stickynote-delete {
+    background: none;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    color: #555;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0.6;
+}
+
+.stickynote-delete:hover {
+    opacity: 1;
+    color: #ff4444;
+}
+
+.stickynote-content {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 15px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    color: #333;
+    transition: font-family 0.3s ease;
+}
+
+.stickynote-audio-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.stickynote-audio-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.stickynote-audio-btn:active {
+    transform: scale(0.95);
+}
+
+.stickynote-audio-btn.recording {
+    color: #ff4444;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 
+  Focus Mode / Invisible Mode 
+  Hides notes to allow reading underlying content without obstruction.
+  Logic: opacity 0 makes it invisible, pointer-events none allows clicking through.
+*/
+.stickynote-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s ease;
+}

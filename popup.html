@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Patrick+Hand&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- 
+    The Popup UI:
+    - Provides a button to toggle "Add Note" mode.
+    - Allows users to select default colors or fonts.
+    - Displays helpful instructions for the user.
+  -->
+    <div class="container">
+        <h1>StickyNotes</h1>
+        <hr>
+
+        <div class="controls">
+            <button id="add-note-btn">Add New Note</button>
+            <p class="description">Click the button, then click anywhere on the page to drop a note.</p>
+        </div>
+
+        <div class="settings">
+            <div class="setting-item">
+                <label for="focus-mode-toggle">Focus Mode:</label>
+                <input type="checkbox" id="focus-mode-toggle">
+            </div>
+
+            <div class="setting-item">
+                <label>Note Color:</label>
+                <div class="color-options">
+                    <div class="color-circle active" data-color="#fff740" style="background-color: #fff740;"></div>
+                    <div class="color-circle" data-color="#7afaff" style="background-color: #7afaff;"></div>
+                    <div class="color-circle" data-color="#ff7eb9" style="background-color: #ff7eb9;"></div>
+                    <div class="color-circle" data-color="#97ff7a" style="background-color: #97ff7a;"></div>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label>Font Style:</label>
+                <select id="font-select">
+                    <option value="'Segoe UI', sans-serif">Standard</option>
+                    <option value="'Indie Flower', cursive">Indie Flower</option>
+                    <option value="'Shadows Into Light', cursive">Shadows Into Light</option>
+                    <option value="'Patrick Hand', cursive">Patrick Hand</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Local Storage Active</p>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
