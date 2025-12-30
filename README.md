@@ -46,4 +46,4 @@ StickyNotes is a lightweight Chrome Extension (Manifest V3) that allows you to p
 
 ---
 
-Built with ❤️ for the [Hackathon Name]
+Built with ❤️ for the [Code Spring]
